@@ -8,9 +8,9 @@
 </p>
 
 ## Install
-$ composer create-project laravel/laravel=v5.7.0
-$ composer config -g repo.packagist composer https://packagist.laravel-china.org
-$ composer config -g repo.packagist composer https://https://packagist.laravel-china.org
+- $ composer create-project laravel/laravel=v5.7.0
+- $ composer config -g repo.packagist composer https://packagist.laravel-china.org
+- $ composer config -g repo.packagist composer https://https://packagist.laravel-china.org
 
 ## About Laravel
 
