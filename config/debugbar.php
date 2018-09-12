@@ -15,7 +15,7 @@ return [
      */
 
     
-    'enabled' => env('APP_DEBUG', false),
+    'enabled' => true,
     'except' => [
         //
     ],
