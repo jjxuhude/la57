@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,14 +14,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//前台
+Route::group([
+        'namespace'=>'Frontend'
+], function (){
+
+    Route::get('/', function () {
+        return view('frontend.welcome');
+    });
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
