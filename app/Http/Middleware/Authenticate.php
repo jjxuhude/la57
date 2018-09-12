@@ -6,6 +6,15 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
 {
+    
+    protected $guards;
+    
+    public function handle($request, \Closure $next, ...$guards)
+    {
+        $this->guards=$guards;
+        $this->authenticate($request, $guards);
+        return $next($request);
+    }
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      *
@@ -14,6 +23,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        return route('login');
+        if(empty($this->guards)){
+            return route('login');
+        }elseif(in_array('backend', $this->guards)){
+            return adminUrl('login');
+        }
     }
 }

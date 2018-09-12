@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Frontend
+                    {{config('app.name')}}
                 </div>
 
                 <div class="links">

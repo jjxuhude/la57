@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:backend');
     }
 
     /**
@@ -22,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        return view('backend.home');
     }
 }

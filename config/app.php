@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'General Backend System',
+    
+    'backend_prefix'=>'admin',
 
     /*
     |--------------------------------------------------------------------------

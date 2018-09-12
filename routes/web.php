@@ -1,28 +1,43 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+ * |--------------------------------------------------------------------------
+ * | Web Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Here is where you can register web routes for your application. These
+ * | routes are loaded by the RouteServiceProvider within a group which
+ * | contains the "web" middleware group. Now create something great!
+ * |
+ */
 
-
-//前台
+// 前台
 Route::group([
-        'namespace'=>'Frontend'
-], function (){
-
+    'namespace' => 'Frontend'
+], function () {
+    
     Route::get('/', function () {
         return view('frontend.welcome');
     });
     Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('home', 'HomeController@index');
+});
+
+
+//后台
+
+Route::group([
+    'prefix'=>config('app.backend_prefix'),
+    'namespace'=>'Backend'
+], function () {
+    $prefix = config('app.backend_prefix');
+    Route::get('/',function () use ($prefix){
+       return  redirect($prefix.'/login');
+    });
+    Route::get('/home', 'HomeController@index');
+    Route::get('login', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout');
 });
