@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+        
         defined('DS') || define('DS',DIRECTORY_SEPARATOR );
         $prefix = config('app.backend_prefix');
         if(preg_match('/^\/'.$prefix.'/i', request()->getRequestUri(),$match)){
