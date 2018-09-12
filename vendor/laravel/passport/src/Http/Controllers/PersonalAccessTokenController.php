@@ -88,6 +88,6 @@ class PersonalAccessTokenController
             return new Response('', 404);
         }
 
-        $token->revoke();
+        $token->delete();
     }
 }
