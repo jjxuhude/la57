@@ -52,7 +52,7 @@ class OauthController extends Controller
     //以下是密码授权方式
     const PASSWORD_CLIENT_ID = 2;
 
-    const PASSWORD_CLIENT_SECRET = "68Z8L9bO6oauU4eYe9uX2m6DbChv13cITfWkztWp";
+    const PASSWORD_CLIENT_SECRET = "ubOdp9mYYax2oGGmmmszTNxjJXgGmpvMdKVre90b";
 
     const USERNAME = "user01@163.com";
 
@@ -167,7 +167,7 @@ class OauthController extends Controller
     /**
      * 密码token
      * php artisan passport:client --password //生成密码授权客户端
-     *
+     *  http://la57.org/api/callback?password
      * @return mixed
      */
     private function passwordToken ()
@@ -195,7 +195,7 @@ class OauthController extends Controller
 
     /**
      * 客户端凭证授权令牌
-     *
+     * http://la57.org/api/callback?credentials
      * @return mixed
      */
     private function credentialsToken ()
