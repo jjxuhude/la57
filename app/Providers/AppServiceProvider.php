@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\Services\RouteConfig;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +33,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton('routeConfig', function ($app) {
+            return new RouteConfig();
+        });
+            
+        $this->app->bind('docParser', function ($app) {
+            return new \App\Services\DocParser();
+        });
     }
 }
