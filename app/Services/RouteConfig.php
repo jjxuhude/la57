@@ -43,7 +43,6 @@ class RouteConfig
                         \Route::patch('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
                         break;
                     case 'get':
-                    default:
                         $params=resolve('docParser')->parse($method)['param'] ?? [];
                         $data=[];
                         foreach($params as $param){
@@ -60,6 +59,7 @@ class RouteConfig
                         }
                         \Route::get('/' . $route . '/' . $method->name.$query, '\\' . $method->class . "@" . $method->name);
                         break;
+                    default:
                 }
             }
     }

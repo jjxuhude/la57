@@ -38,6 +38,7 @@ class DbController extends Controller
     
     /**
      * @desc hasMany
+     * @method get
      */
     
     function demo2(){
@@ -56,6 +57,7 @@ class DbController extends Controller
     
     /**
      * @desc 插入
+     * @method get
      */
     function demo3(){
         $user = User::find(1);
@@ -64,6 +66,7 @@ class DbController extends Controller
     
     /**
      * @desc create([])方法
+     * @method get
      */
     function demo4(){
         User::find(1)->post()->create(['title'=>'blog 07']);
@@ -71,6 +74,7 @@ class DbController extends Controller
     
     /**
      * @desc createMany();
+     * @method get
      */
     function demo5(){
         User::find(1)->post()->createMany([
@@ -83,7 +87,11 @@ class DbController extends Controller
     }
     
     /**
-     * 表格
+     * 表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格
+     * 表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格表格
+     * 表格表格表格表格表格表格表格表格表格表格表格
+     * 表格表格表格表格表格
+     * @method get
      * @return
      */
     function table(){

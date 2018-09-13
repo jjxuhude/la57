@@ -20,7 +20,7 @@ class RequestController extends Controller
 
     /**
      * path
-     *
+     * @method get
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     function path()
@@ -30,6 +30,7 @@ class RequestController extends Controller
 
     /**
      * url
+     * @method get
      */
     function url()
     {
@@ -38,6 +39,7 @@ class RequestController extends Controller
 
     /**
      * method
+     * @method get
      */
     function method()
     {
@@ -46,6 +48,7 @@ class RequestController extends Controller
 
     /**
      * query
+     * @method get
      */
     function query()
     {
@@ -54,7 +57,7 @@ class RequestController extends Controller
 
     /**
      * doc
-     *
+     * @method get
      * @param Illuminate\Support\Facades\App $aaa            
      * @param int $bbb            
      */
@@ -65,6 +68,7 @@ class RequestController extends Controller
 
     /**
      * phpinfo
+     * @method get
      */
     function p()
     {
@@ -73,6 +77,7 @@ class RequestController extends Controller
     
     /**
      * @desc 加密解密
+     * @method get
      */
     function crypt(){
         $enString=encrypt('user01');

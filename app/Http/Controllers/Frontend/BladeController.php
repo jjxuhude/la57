@@ -8,7 +8,7 @@ class BladeController extends Controller
 
     /**
      * blade模板测试
-     * 
+     * @method get
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     function index()
@@ -18,7 +18,7 @@ class BladeController extends Controller
 
     /**
      * solt演示
-     * 
+     * @method get
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     function solt()

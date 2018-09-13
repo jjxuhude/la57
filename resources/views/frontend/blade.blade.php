@@ -2,7 +2,7 @@
 <div class="container">
 	<div style="width: 100%; margin: 0 auto;">
 		<table
-			class="table table-condensed table-hover table table-striped">
+			class="table table-condensed table-hover table table-striped table-bordered">
 			<tr>
 				<th>接口名称</th>
 				<th style="width:50%;">接口描述</th>
@@ -11,6 +11,7 @@
 			</tr>
 		
 		<?php foreach($methods as $method):?>
+		<?php if(isset($method->doc['method']) && !empty($method->doc['method'])):?>
 		<tr>
 				<td><?php echo  $method->name?></td>
 				<td><a href="<?php echo url('/'.$method->router.'/'.$method->name)?>">
@@ -22,7 +23,7 @@
 					   }else{
 					       $description="";
 					   }
-					   echo  substr($description,0,150);
+					   echo $description;
 					  ?>
 					</a>
 				</td>
@@ -33,6 +34,7 @@
 				<?php endforeach;endif;?>
 			</td>
 		</tr>
+		<?php endif;?>
 		<?php endforeach;?>
 	
 	</table>
