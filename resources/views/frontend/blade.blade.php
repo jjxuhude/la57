@@ -33,7 +33,7 @@
 				<td><?php echo strtoupper($method->doc['method']??'')?></td>
 				<td>
 				<?php if(isset($method->doc['param'])): foreach($method->doc['param'] as $k=>$v):?>
-					<li> @param <?php echo $v?></li>
+					<li><?php echo $v?></li>
 				<?php endforeach;endif;?>
 			</td>
 		</tr>
