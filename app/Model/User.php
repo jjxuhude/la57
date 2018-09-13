@@ -28,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function  address(){
+        return  $this->hasOne('App\Model\Address');
+    }
+    
+    public function post(){
+        return $this->hasMany('App\Model\Post');
+    }
 }

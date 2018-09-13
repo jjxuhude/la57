@@ -1,6 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Frontend\BladeController;
+use App\Http\Controllers\Frontend\RequestController;
+use App\Http\Controllers\Frontend\DbController;
+
 
 /*
  * |--------------------------------------------------------------------------
@@ -23,6 +27,11 @@ Route::group([
     });
     Auth::routes();
     Route::get('home', 'HomeController@index');
+    
+    $routeConfig = resolve('routeConfig');
+    $routeConfig->setController(BladeController::class);
+    $routeConfig->setController(RequestController::class);
+    $routeConfig->setController(DbController::class);
 });
 
 
