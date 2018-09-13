@@ -1,4 +1,5 @@
 @extends('frontend.layouts.app') @section('content')
+<div><aaa/></div>
 <div class="container">
 	<div style="width: 100%; margin: 0 auto;">
 		<table
@@ -36,11 +37,8 @@
 		</tr>
 		<?php endif;?>
 		<?php endforeach;?>
-	
 	</table>
 	</div>
-
-
-
 </div>
 @endsection
+

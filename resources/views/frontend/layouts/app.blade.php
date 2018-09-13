@@ -11,6 +11,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <?php if(isset($js)): if(is_array($js)): foreach($js as $file):?>
+    <script src="{{ asset("js/$file") }}" defer></script>
+    <?php endforeach;else:?>
+    <script src="{{ asset("js/$js") }}" defer></script>
+    <?php endif;endif;?>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -18,6 +23,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <?php if(isset($css)):if(is_array($css)): foreach($css as $file):?>
+    <link href="{{ asset("css/$file") }}" rel="stylesheet">
+    <?php endforeach;else:?>
+    <link href="{{ asset("css/$file") }}" rel="stylesheet">
+    <?php endif;endif;?>
 </head>
 <body>
     <div id="app">
