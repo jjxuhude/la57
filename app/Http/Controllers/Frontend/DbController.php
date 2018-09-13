@@ -15,7 +15,7 @@ class DbController extends Controller
      */
     function index()
     {
-        view()->share('js', 'db.js');
+        view()->share('js', 'vue.js');
         return parent::index();
     }
 

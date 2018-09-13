@@ -10,11 +10,11 @@
     <title>{{ config('app.name', 'Frontend') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset("js/app.js") }}" ></script>
     <?php if(isset($js)): if(is_array($js)): foreach($js as $file):?>
-    <script src="{{ asset("js/$file") }}" defer></script>
+    <script src="{{ asset("js/$file") }}" ></script>
     <?php endforeach;else:?>
-    <script src="{{ asset("js/$js") }}" defer></script>
+    <script src="{{ asset("js/$js") }}" ></script>
     <?php endif;endif;?>
 
     <!-- Fonts -->

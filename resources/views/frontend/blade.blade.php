@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app') @section('content')
-<div><aaa/></div>
+<div id="app1">
+	<span v-for="i in items">${i}</span>
+</div>
 <div class="container">
 	<div style="width: 100%; margin: 0 auto;">
 		<table
@@ -40,5 +42,18 @@
 	</table>
 	</div>
 </div>
+<script>
+new Vue({ 
+	el: '#app1',
+	delimiters: ['${', '}'],
+	data:function (){
+		return {
+			items:[1,2,3,4,5]
+		}
+	}
+
+})
+</script>
 @endsection
+
 
