@@ -423,6 +423,9 @@ class ComposerStaticInit06e7155fb2e008be6a399c727d4dd509
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Controller.php',
+        'App\\Http\\Controllers\\API\\OauthController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/OauthController.php',
+        'App\\Http\\Controllers\\API\\PassportController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/PassportController.php',
         'App\\Http\\Controllers\\Backend\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Auth/LoginController.php',
         'App\\Http\\Controllers\\Backend\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/Controller.php',
         'App\\Http\\Controllers\\Backend\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Backend/HomeController.php',
@@ -448,6 +451,8 @@ class ComposerStaticInit06e7155fb2e008be6a399c727d4dd509
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Services\\DocParser' => __DIR__ . '/../..' . '/app/Services/DocParser.php',
+        'App\\Services\\RouteConfig' => __DIR__ . '/../..' . '/app/Services/RouteConfig.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
         'Barryvdh\\Debugbar\\Controllers\\BaseController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/BaseController.php',

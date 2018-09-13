@@ -35,7 +35,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//http://la.org/api/callback?credentials这种方式获取目前还不确定怎么验证
+//http://la.org/api/callback?credentials：获取token后使用client中间件检测
 Route::middleware('client')->get('/client', function (Request $request) {
     return ['测试客户端凭证授权令牌'];
 });

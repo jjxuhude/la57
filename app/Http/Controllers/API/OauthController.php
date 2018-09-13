@@ -120,6 +120,7 @@ class OauthController extends Controller
     }
 
     /**
+     * http://la57.org/api/redirect/5
      * 通过code获取token
      * 这个ajax请求是写在三方平台上的ajax请求，需要填写申请的your client id、 your lient  secret、REDIRECT_URI
      * @param unknown $request            

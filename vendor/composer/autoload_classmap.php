@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\API\\Controller' => $baseDir . '/app/Http/Controllers/API/Controller.php',
+    'App\\Http\\Controllers\\API\\OauthController' => $baseDir . '/app/Http/Controllers/API/OauthController.php',
+    'App\\Http\\Controllers\\API\\PassportController' => $baseDir . '/app/Http/Controllers/API/PassportController.php',
     'App\\Http\\Controllers\\Backend\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Backend/Auth/LoginController.php',
     'App\\Http\\Controllers\\Backend\\Controller' => $baseDir . '/app/Http/Controllers/Backend/Controller.php',
     'App\\Http\\Controllers\\Backend\\HomeController' => $baseDir . '/app/Http/Controllers/Backend/HomeController.php',
@@ -33,6 +36,8 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Services\\DocParser' => $baseDir . '/app/Services/DocParser.php',
+    'App\\Services\\RouteConfig' => $baseDir . '/app/Services/RouteConfig.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Controllers\\AssetController' => $vendorDir . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
     'Barryvdh\\Debugbar\\Controllers\\BaseController' => $vendorDir . '/barryvdh/laravel-debugbar/src/Controllers/BaseController.php',
