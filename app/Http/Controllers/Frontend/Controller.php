@@ -11,7 +11,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-    function index()
+    /**
+     * @method get
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+   public function index()
     {
         $refClass = new \ReflectionClass($this);
         $methods = $refClass->getMethods(\ReflectionMethod::IS_PUBLIC);
@@ -21,12 +25,13 @@ class Controller extends BaseController
                 $method->router=$router;
                 $method->desc = resolve('routeConfig')->getDocParam($method, 'desc');
                 $method->doc = resolve('docParser')->parse($method);
+                
                 return $method;
             }
         });
             
-            return view('frontend.blade', [
-                'methods' => $methods
-            ]);
+        return view('frontend.blade', [
+            'methods' => $methods
+        ]);
     }
 }

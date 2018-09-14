@@ -14,7 +14,6 @@ class RouteConfig
             }
         });
             
-            // dump($methods);exit;
             foreach ($methods as $method) {
                 
                 $route = strtolower(strstr(basename(str_replace('\\', DIRECTORY_SEPARATOR, $method->class)), 'Controller', true));
@@ -107,6 +106,10 @@ class RouteConfig
                 $this->setController($namespace.strtr($controller,['.php'=>'']),$routePrefix);
            }
         }
+    }
+    
+    function aaa(){
+        dump('2222');
     }
 }
 

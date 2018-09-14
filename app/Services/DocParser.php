@@ -24,21 +24,25 @@ class DocParser
         if ($doc == '') {
             return $this->params;
         }
+   
         // Get the comment
-        if (preg_match('#^/\*\*(.*)\*/#s', $doc, $comment) === false)
+        if (preg_match('#^/\*\*(.*)\*/#s', $doc, $comment) === false){
             return $this->params;
+        }
+        if(isset($comment[1])){
             $comment = trim($comment[1]);
-            // Get all the lines and strip the * from the first character
-            if (preg_match_all('#^\s*\*(.*)#m', $comment, $lines) === false)
-                return $this->params;
-                $this->parseLines($lines[1]);
-                if(isset($this->params['param']) && !is_array($this->params['param'])){
-                    $this->params['param']=[$this->params['param']];
-                }
-                if(isset($this->params['param']) && is_array($this->params['param'])){
-                    $this->params['param']=$this->arr_foreach($this->params['param']);
-                }
-                return $this->params;
+            if (preg_match_all('#^\s*\*(.*)#m', $comment, $lines) === false){
+                    return $this->params;
+            }
+            $this->parseLines($lines[1]);
+            if(isset($this->params['param']) && !is_array($this->params['param'])){
+                $this->params['param']=[$this->params['param']];
+            }
+            if(isset($this->params['param']) && is_array($this->params['param'])){
+                $this->params['param']=$this->arr_foreach($this->params['param']);
+            }
+        }
+        return $this->params;
     }
     
     function arr_foreach($array,$return=[]){
