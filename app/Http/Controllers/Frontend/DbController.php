@@ -98,6 +98,21 @@ class DbController extends Controller
         dump(array_diff($db2, $db1));
     }
     
+    /**
+     * join
+     * @method get
+     */
+    function join(){
+       $user=\DB::table('users')->select()->get();
+       $user=\DB::table('users')->first();
+       $user=\DB::table('users')->value('id');
+       $user=\DB::table('users')->pluck('name','id')->toArray();
+       $user=\DB::table('users')->selectRaw('count(name) as count')->get();
+       $user=\DB::table('users as m')->join('addresses as s','m.id','=','s.user_id')->selectRaw('m.*,s.city')->get();
+       $user=\DB::table('users')->find(2);
+       dump($user);
+    }
+    
    
 }
 
