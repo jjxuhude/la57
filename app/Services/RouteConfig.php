@@ -87,5 +87,18 @@ class RouteConfig
         }
         return '';
     }
+    
+    function registerFrontend($area){
+        $path='app'.DS.'Http'.DS.'Controllers'.DS.$area;
+        $namespace="App\\Http\\Controllers\\".$area."\\";
+        $fullPath=app()->basePath($path);
+        $files=glob($fullPath.DS.'*.php');
+        foreach($files as $file){
+            $controller=basename($file);
+            if(strpos($controller, 'Controller.php')>0){
+                $this->setController($namespace.strtr($controller,['.php'=>'']));
+           }
+        }
+    }
 }
 

@@ -27,16 +27,11 @@ Route::group([
     });
     Auth::routes();
     Route::get('home', 'HomeController@index');
-    
-    $routeConfig = resolve('routeConfig');
-    $routeConfig->setController(BladeController::class);
-    $routeConfig->setController(RequestController::class);
-    $routeConfig->setController(DbController::class);
+    resolve('routeConfig')->registerFrontend('Frontend');
 });
 
 
 //后台
-
 Route::group([
     'prefix'=>config('app.backend_prefix'),
     'namespace'=>'Backend'
@@ -45,8 +40,8 @@ Route::group([
     Route::get('/',function () use ($prefix){
        return  redirect($prefix.'/login');
     });
-    Route::get('/home', 'HomeController@index');
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
+    resolve('routeConfig')->registerFrontend('Backend');
 });
