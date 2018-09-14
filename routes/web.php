@@ -26,7 +26,6 @@ Route::group([
         return view('frontend.welcome');
     });
     Auth::routes();
-    Route::get('home', 'HomeController@index');
     resolve('routeConfig')->registerFrontend('Frontend');
 });
 

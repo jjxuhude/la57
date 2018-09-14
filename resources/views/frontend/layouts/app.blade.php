@@ -9,9 +9,8 @@
 
     <title>{{ config('app.name', 'Frontend') }}</title>
 
-	<?php dump(request()->route()->getName());?>
     <!-- Scripts -->
-    <script src="{{ asset("js/app.js") }} " defer></script>
+    <script src="{{ asset("js/app.js") }} " <?php if(request()->route()->getName()=='home') echo 'defer' ?>></script>
     <?php if(isset($js)): if(is_array($js)): foreach($js as $file):?>
     <script src="{{ asset("js/$file") }}" ></script>
     <?php endforeach;else:?>

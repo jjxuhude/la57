@@ -30,7 +30,7 @@ class RouteConfig
                     $routeName=$route . '.' . $method->name;
                 }
                 if ($method->name == 'index') {
-                    \Route::get('/' . $route, '\\' . $method->class . "@" . $method->name)->name($routeName);
+                    \Route::get('/' . $route, '\\' . $method->class . "@" . $method->name)->name($route);
                 }
                 
                 
