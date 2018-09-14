@@ -4,7 +4,7 @@ namespace App\Services;
 class RouteConfig
 {
     
-    function setController($controller)
+    function setController($controller,$routePrefix='')
     {
         $refClass = new \ReflectionClass($controller);
         $methods = $refClass->getMethods(\ReflectionMethod::IS_PUBLIC);
@@ -21,26 +21,34 @@ class RouteConfig
                 
                 // preg_match('/[\\\](\w+)Controller$/U', $method->class,$match);
                 // if(isset($match[1])) $route=$match[1];
+                
+                
+               
+                if($routePrefix){
+                    $routeName=strtolower($routePrefix).'.'.$route . '.' . $method->name;
+                }else{
+                    $routeName=$route . '.' . $method->name;
+                }
                 if ($method->name == 'index') {
-                    \Route::get('/' . $route, '\\' . $method->class . "@" . $method->name);
+                    \Route::get('/' . $route, '\\' . $method->class . "@" . $method->name)->name($routeName);
                 }
                 
                 
                 switch ($this->getDocParam($method, 'method')) {
                     case 'post':
-                        \Route::post('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
+                        \Route::post('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     case 'put':
-                        \Route::put('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
+                        \Route::put('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     case 'delete':
-                        \Route::delete('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
+                        \Route::delete('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     case 'option':
-                        \Route::option('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
+                        \Route::option('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     case 'patch':
-                        \Route::patch('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name);
+                        \Route::patch('/' . $route . '/' . $method->name, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     case 'get':
                         $params=resolve('docParser')->parse($method)['param'] ?? [];
@@ -57,7 +65,7 @@ class RouteConfig
                         }elseif(count($data)>1){
                             $query='/'.join('/',$data);
                         }
-                        \Route::get('/' . $route . '/' . $method->name.$query, '\\' . $method->class . "@" . $method->name);
+                        \Route::get('/' . $route . '/' . $method->name.$query, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     default:
                 }
@@ -88,7 +96,7 @@ class RouteConfig
         return '';
     }
     
-    function registerFrontend($area){
+    function registerFrontend($area,$routePrefix=''){
         $path='app'.DS.'Http'.DS.'Controllers'.DS.$area;
         $namespace="App\\Http\\Controllers\\".$area."\\";
         $fullPath=app()->basePath($path);
@@ -96,7 +104,7 @@ class RouteConfig
         foreach($files as $file){
             $controller=basename($file);
             if(strpos($controller, 'Controller.php')>0){
-                $this->setController($namespace.strtr($controller,['.php'=>'']));
+                $this->setController($namespace.strtr($controller,['.php'=>'']),$routePrefix);
            }
         }
     }

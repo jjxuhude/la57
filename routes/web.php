@@ -43,5 +43,5 @@ Route::group([
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout');
-    resolve('routeConfig')->registerFrontend('Backend');
+    resolve('routeConfig')->registerFrontend('Backend',config('app.backend_prefix'));
 });
