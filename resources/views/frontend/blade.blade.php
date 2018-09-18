@@ -20,7 +20,7 @@
 					   }else{
 					       $description="";
 					   }
-					   echo $description;
+					   echo nl2br($description);
 					  ?>
 					</a>
 				</td>
