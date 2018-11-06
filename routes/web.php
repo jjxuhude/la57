@@ -32,10 +32,10 @@ Route::group([
 
 //后台
 Route::group([
-    'prefix'=>config('app.backend_prefix'),
+    'prefix'=>ADMIN,
     'namespace'=>'Backend'
 ], function () {
-    $prefix = config('app.backend_prefix');
+    $prefix = ADMIN;
     Route::get('/',function () use ($prefix){
        return  redirect($prefix.'/login');
     });

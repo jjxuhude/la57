@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Frontend;
 
 
 use Illuminate\Support\Facades\Redis;
+use App\Model\User;
 
 class RedisController extends Controller
 {
@@ -16,6 +17,44 @@ class RedisController extends Controller
         view()->share('js', 'vue.js');
         return parent::index();
     }
+    
+    
+    /**
+     * 查找指定的元素
+     * @method get
+     */
+    function keys(){
+        $list = Redis::keys('user*');
+        dump($list);
+    }
+    
+    /**
+     * 保存对象
+     * @method get
+     */
+    function saveObject(){
+        $users=User::get()->toArray();
+        foreach($users as $user){
+            Redis::Hset('userObj_'.$user['name'],'id',$user['id']);
+            Redis::Hset('userObj_'.$user['name'],'name',$user['name']);
+            Redis::Hset('userObj_'.$user['name'],'email',$user['email']);
+            Redis::Hset('userObj_'.$user['name'],'created_at',$user['created_at']);
+            Redis::Hset('userObj_'.$user['name'],'updated_at',$user['updated_at']);
+        }
+    }
+    
+    /**
+     * 获取哈希表中所有的元素
+     * @method get
+     */
+    function getObject(){
+       $keys=Redis::keys('userObj_*');
+       foreach($keys as $key){
+           $obj=Redis::HgetAll($key);
+           dump($obj);
+       }
+    }
+    
 
     /**
      * set
@@ -167,6 +206,9 @@ class RedisController extends Controller
         $n = Redis::zscore('member1','user_96');
         dump($n);
     }
+    
+    
+
 
     
    
