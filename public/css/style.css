@@ -9,4 +9,19 @@ body {
 #app {
   background: #373330;
   height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#app #menu-wrapper {
+  flex-basis: 150px;
+  background: #000000;
+  color: #fff;
+  min-height: 100%;
+}
+#app #page-wrapper {
+  flex-basis: calc(100% - 150px);
+  background: #fff;
+  min-height: 100%;
 }
