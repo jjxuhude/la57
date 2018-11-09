@@ -2,21 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in backend!
-                </div>
-            </div>
+    <div class="row justify-content-center" id="content-wraper">
+        <div class="messages">
+                <span class="iconfont message-warning"></span>
+                <span>
+                One or more integrations have been reset because of a change to their xml configs.
+        </div>
+        <div class="page-title"></div>
+        <div class="tools"></div>
+        <div class="grid">
+            <div class="grad-header"></div>
+            <div class="grad-data"></div>
         </div>
     </div>
 </div>
