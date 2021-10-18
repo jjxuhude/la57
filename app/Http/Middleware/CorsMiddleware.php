@@ -16,11 +16,11 @@ class CorsMiddleware
     {
         $origin = $request->server('HTTP_ORIGIN');
         $headers = [
-           'Access-Control-Allow-Origin' => $origin,
+            'Access-Control-Allow-Origin' => $origin,
             'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
-             'Access-Control-Allow-Credentials' => 'true',
+            'Access-Control-Allow-Credentials' => 'true',
             'Access-Control-Max-Age' => '86400',
-            'Access-Control-Allow-Headers' => 'X-Token,Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With,access-token,version,Token,token,refresh-token,from'
+            'Access-Control-Allow-Headers' => '*'
         ];
 
         if ($request->isMethod('OPTIONS')) {
