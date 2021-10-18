@@ -11,7 +11,7 @@
 		<?php if(isset($method->doc['method']) && !empty($method->doc['method'])):?>
 		<tr>
 				<td><?php echo  $method->name?></td>
-				<td><a href="<?php echo url('/'.$method->router.'/'.$method->name)?>">
+				<td><a href="<?php echo url($method->router.'/'.$method->name)?>">
 					<?php
 					   if(isset($method->doc['description']) && !empty($method->doc['description'])){
 					       $description=$method->doc['description'];

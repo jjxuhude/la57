@@ -21,12 +21,15 @@ use App\Http\Controllers\Frontend\DbController;
 Route::group([
     'namespace' => 'Frontend'
 ], function () {
-    
+
+    $prefix = config('app.frontend_prefix');
     Route::get('/', function () {
         return view('frontend.welcome');
     });
     Auth::routes();
-    resolve('routeConfig')->registerFrontend('Frontend');
+    resolve('routeConfig')->registerFrontend('Frontend',$prefix);
+    Route::any($prefix.'/user/routes', 'UserController@roles');
+    Route::any($prefix.'/auth/oauth/token', 'UserController@login');
 });
 
 

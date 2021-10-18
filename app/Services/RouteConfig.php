@@ -16,18 +16,16 @@ class RouteConfig
             
             foreach ($methods as $method) {
                 
-                $route = strtolower(strstr(basename(str_replace('\\', DIRECTORY_SEPARATOR, $method->class)), 'Controller', true));
+                $route = $routePrefix."/".strtolower(strstr(basename(str_replace('\\', DIRECTORY_SEPARATOR, $method->class)), 'Controller', true));
                 
                 // preg_match('/[\\\](\w+)Controller$/U', $method->class,$match);
                 // if(isset($match[1])) $route=$match[1];
                 
                 
                
-                if($routePrefix){
-                    $routeName=strtolower($routePrefix).'.'.$route . '.' . $method->name;
-                }else{
-                    $routeName=$route . '.' . $method->name;
-                }
+
+                $routeName=$route . '.' . $method->name;
+
                 if ($method->name == 'index') {
                     \Route::get('/' . $route, '\\' . $method->class . "@" . $method->name)->name($route);
                 }
@@ -67,6 +65,22 @@ class RouteConfig
                         \Route::get('/' . $route . '/' . $method->name.$query, '\\' . $method->class . "@" . $method->name)->name($routeName);
                         break;
                     default:
+                        $params=resolve('docParser')->parse($method)['param'] ?? [];
+                        $data=[];
+                        foreach($params as $param){
+                            $paramArr=explode('$',$param);
+                            if(count($paramArr)==2){
+                                $data[]='{'.$paramArr[1].'}';
+                            }
+                        }
+                        $query="";
+                        if(count($data)==1){
+                            $query='/'.$data[0];
+                        }elseif(count($data)>1){
+                            $query='/'.join('/',$data);
+                        }
+                        \Route::any('/' . $route . '/' . $method->name.$query, '\\' . $method->class . "@" . $method->name)->name($routeName);
+                        break;
                 }
             }
     }

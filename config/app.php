@@ -16,6 +16,7 @@ return [
     'name' => 'General Backend System',
     
     'backend_prefix'=>'admin',
+    //'frontend_prefix'=>'vue-element-admin',
 
     /*
     |--------------------------------------------------------------------------
